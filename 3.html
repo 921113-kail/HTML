@@ -32,7 +32,11 @@
             align-items: center;
             height: 100vh;
             text-align: center;
-            animation: fadeIn 1s ease-in-out; /* 添加动画 */
+            animation: fadeIn 1s ease-in-out;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); /* 独立部分区域蓝紫渐变 */
+            border-radius: 32px;
+            box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+            position: relative;
         }
 
         h1 {
@@ -82,8 +86,8 @@
 
         .borderless-button {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 1em;
+            padding: 16px 50px;      /* 调整按钮内边距，变大 */
+            font-size: 2em;        /* 调整字体大小，变大 */
             font-family: Arial, sans-serif;
             color: #3498db; /* 按钮文字颜色 */
             background-color: transparent; /* 背景透明 */
@@ -106,11 +110,61 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="position:relative;">
         <h1>欢迎来到第二个界面</h1>
         <p>这是一个简单的第二个界面示例。</p>
-        <a href="index.html" class="borderless-button">返回第一个界面</a>
-        <a href="4.html" class="borderless-button">进入第三个界面</a>
+        <!-- 在原界面加载gif动画 -->
+        <img src="1-1.webp" alt="加载动画" style="width:300px;height:300px;position:absolute;top:450px;left:100px;z-index:10;">
+        <!-- 自定义每个按钮的位置 -->
+        <a href="2.html" class="borderless-button" style="position:absolute;top:115px;left:12px;">返回第一个界面</a>
+        <a href="4.html" class="borderless-button" style="position:absolute;top:165px;left:12px;">进入第三个界面</a>
+        <button class="borderless-button" style="position:absolute;top:215px;left:12px;" onclick="toggleOverlay()">敬请期待1</button>
+        <button class="borderless-button" style="position:absolute;top:265px;left:12px;" onclick="toggleOverlay2()">敬请期待2</button>
     </div>
+    <!-- 覆盖新部分界面1 -->
+    <div id="overlay-part" style="
+        display:none;
+        position:fixed;
+        top:15vh; left:25vw; width:70vw; height:80vh;
+        background:rgba(224,234,252,0.98);
+        z-index:2000;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        border-radius:18px;
+        box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+    ">
+        <h2>第一个覆盖界面</h2>
+        <p>不知道</p>
+    </div>
+    <!-- 新增的覆盖界面2 -->
+    <div id="overlay-part2" style="
+         display:none;
+        position:fixed;
+        top:15vh; left:25vw; width:70vw; height:80vh;
+        background:rgba(224,234,252,0.98);
+        z-index:999;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        border-radius:18px;
+        box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+    ">
+        <h2>第二个覆盖界面</h2>
+        <p>不知道</p>
+        <button class="borderless-button" onclick="toggleOverlay2()">关闭</button>
+    </div>
+    <script>
+        function toggleOverlay() {
+            const overlay = document.getElementById('overlay-part');
+            overlay.style.display = (overlay.style.display === 'none' || overlay.style.display === '') ? 'flex' : 'none';
+        }
+        function toggleOverlay2() {
+            const overlay2 = document.getElementById('overlay-part2');
+            overlay2.style.display = (overlay2.style.display === 'none' || overlay2.style.display === '') ? 'flex' : 'none';
+        }
+    </script>
 </body>
 </html>
