@@ -6,87 +6,79 @@
     <title>My First HTML Page</title> 
     <style>
         body {
-            margin: 0; /* 去掉默认边距 */
-            overflow: hidden; /* 防止滚动条在动画期间出现 */
+            margin: 0;
+            overflow: hidden;
         }
         video {
-            position: fixed; /* 视频固定位置 */
-            right: 0;     /* 视频固定在右下角 */
-            bottom: 0;      /* 视频固定在右下角 */
-            min-width: 100%; /* 确保视频覆盖整个屏幕 */
-            min-height: 100%; /* 确保视频覆盖整个屏幕 */ 
-            width: 100%; /* 确保视频覆盖整个屏幕 */
-            height: 100%; /* 确保视频覆盖整个屏幕 */
-            object-fit: cover; /* 确保视频始终覆盖整个背景 */
-            z-index: -1; /* 确保视频在背景中 */
-            -webkit-filter: grayscale(20%); /* 设置视频为灰度 */
-            filter: grayscale(20%); /* 设置视频为灰度 */
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100vw;
+            min-height: 100vh;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            -webkit-filter: grayscale(20%);
+            filter: grayscale(20%);
         }
         .intro {
-            position: fixed; /* 固定位置 */
-            top: 0; /* 从左上角开始 */
-            left: 0; /* 从左上角开始 */
-            width: 100%; /* 占满整个屏幕 */
-            height: 100%; /* 占满整个屏幕 */
-            background-color: lightblue; /* 背景颜色 */
-            display: flex;      /* 使用flex布局 */
-            flex-direction: column; /* 垂直排列元素 */
-            justify-content: center; /* 垂直居中 */
-            align-items: center;  /* 垂直和水平居中 */
-            z-index: 10;                 /* 确保开场动画在视频上方 */
-            animation: fadeOut 2s ease-in-out 3s forwards; /* 动画持续 2 秒，延迟 3 秒后开始 */
-            will-change: opacity, visibility;     /* 提高性能 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: lightblue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            animation: fadeOut 2s ease-in-out 3s forwards;
+            will-change: opacity, visibility;
         }
         .intro h1 {
-            font-family: 'Courier New', Courier, monospace; /* 更改字体 */
-            font-size: 3em;       /* 字体大小 */
-            color: rgb(81, 193, 212); /* 字体颜色 */
-            text-align: center; /* 水平居中 */
-            line-height: 1.5; /* 调整行高 */
-            margin: 20px 0; /* 调整上下外边距 */
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 3em;
+            color: rgb(81, 193, 212);
+            text-align: center;
+            line-height: 1.5;
+            margin: 20px 0;
         }
         .intro img {
-            width: 100px;    /* 图片大小 */
-            height: 100px;       /* 图片大小 */
-            border-radius: 50%;       /* 圆形图片 */
-            margin-top: 20px;          /* 上外边距 */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-top: 20px;
         }
         .loader {
-            border: 5px solid #f3f3f3;            /* 边框颜色 */
-            border-top: 5px solid #3498db;      /* 顶部颜色 */
-            border-radius: 50%;          /* 圆形加载器 */
-            width: 50px;            /* 圆形加载器 */
-            height: 50px;       /* 圆形加载器 */
-            animation: spin 1s linear infinite; /* 无限旋转动画 */
-            margin-top: 20px; /* 上外边距 */
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-top: 20px;
         }
         @keyframes spin {
-            from {
-                transform: rotate(0deg); /* 初始旋转角度 */
-            }
-            to {
-                transform: rotate(360deg); /* 旋转360度 */
-            }
+            from { transform: rotate(0deg);}
+            to { transform: rotate(360deg);}
         }
         @keyframes fadeOut {
             to {
-                opacity: 0;                 /* 透明度变为0 */
-                visibility: hidden;     /* 隐藏元素 */
-            }   
+                opacity: 0;
+                visibility: hidden;
+            }
         }
         .content {
-            display: none;  /* 初始隐藏主内容 */
-            animation: fadeIn 1s ease-in-out forwards; /* 动画持续 1 秒 */
-            will-change: opacity;  /* 提高性能 */
-            text-align: center; /* 水平居中内容 */
+            display: none;
+            animation: fadeIn 1s ease-in-out forwards;
+            will-change: opacity;
+            text-align: center;
         }
         @keyframes fadeIn {
-            from {
-                opacity: 0;             /* 初始透明度为0 */
-            }
-            to {
-                opacity: 1;             /* 完全不透明 */
-            }
+            from { opacity: 0;}
+            to { opacity: 1;}
         }
         .content h1 {
             display: inline-block;
@@ -97,16 +89,12 @@
             position: relative;
             top: 250px;
         }
-
-        /* 每个字母的动画 */
         .letter {
             display: inline-block;
             opacity: 0;
             transform: translateX(-100%);
             animation: moveLetter 1s ease-in-out forwards;
         }
-
-        /* 定义沿X轴运动的动画 */
         @keyframes moveLetter {
             0% {
                 opacity: 0;
@@ -117,67 +105,53 @@
                 transform: translateX(0);
             }
         }
-        @media (max-width: 768px) { /* 小屏幕设备 */
-            .intro h1 {
-                font-size: 2em;      /* 小屏幕字体大小 */
-            }
-            .loader {
-                width: 30px;           /* 小屏幕加载器大小 */
-                height: 30px;     /* 小屏幕加载器大小 */
-            } 
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            font-family: 'SimHei', sans-serif;
+            color: white;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .button {     /* 按钮样式 */
-            display: inline-block;     /* 使按钮成为块级元素 */
-            padding: 10px 20px;     /* 按钮内边距 */
-            font-size: 0.9em;     /* 按钮字体大小 */
-            font-family: 'SimHei', sans-serif;     /* 更改字体 */
-            color: white;     /* 按钮文字颜色 */
-            background-color: #3498db;      /* 按钮背景颜色 */
-            border: none;       /* 无边框 */
-            border-radius: 5px;      /* 圆角边框 */
-            cursor: pointer;         /* 鼠标悬停时显示手型 */
-            text-align: center;       /* 水平居中按钮 */
-            text-decoration: none;           /* 去掉下划线 */
-            transition: background-color 0.3s ease, transform 0.2s ease; /* 添加过渡效果 */
+        .button:hover {
+            background-color: #ffffff;
+            transform: scale(0.9);
         }
-
-        .button:hover {      /* 鼠标悬停时的样式 */
-            background-color: #ffffff; /* 悬停时改变背景颜色 */
-            transform: scale(0.9); /* 悬停时放大按钮 */
+        .button:active {
+            background-color: #ffffff;
+            transform: scale(0.8);
         }
-
-        .button:active {     /* 鼠标点击时的样式 */
-            background-color: #ffffff; /* 点击时改变背景颜色 */
-            transform: scale(0.8); /* 点击时缩小按钮 */
+        .transparent-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            font-family: 'SimHei', sans-serif;
+            color: #3498db;
+            background-color: transparent;
+            border: 2px solid #eeeeee;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
         }
-        .transparent-button { /* 透明按钮样式 */
-            display: inline-block; /* 使按钮成为块级元素 */
-            padding: 10px 20px; /* 按钮内边距 */
-            font-size: 1em; /* 按钮字体大小 */
-            font-family: 'SimHei', sans-serif; /* 更改字体 */
-            color: #3498db; /* 按钮文字颜色 */
-            background-color: transparent; /* 背景透明 */
-            border: 2px solid #eeeeee; /* 边框颜色 */
-            border-radius: 5px; /* 圆角边框 */
-            cursor: pointer; /* 鼠标悬停时显示手型 */
-            text-align: center; /* 水平居中按钮 */
-            text-decoration: none; /* 去掉下划线 */
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* 添加过渡效果 */
+        .transparent-button:hover {
+            background-color: #ffffff;
+            color: white;
+            transform: scale(1.1);
         }
-
-        .transparent-button:hover { /* 鼠标悬停时的样式 */
-            background-color: #ffffff; /* 悬停时背景变为蓝色 */
-            color: white; /* 悬停时文字变为白色 */
-            transform: scale(1.1); /* 悬停时放大按钮 */
+        .transparent-button:active {
+            background-color: #2980b9;
+            color: white;
+            transform: scale(1);
         }
-
-        .transparent-button:active { /* 鼠标点击时的样式 */
-            background-color: #2980b9; /* 点击时背景变为深蓝色 */
-            color: white; /* 点击时文字变为白色 */
-            transform: scale(1); /* 点击时恢复原始大小 */
-        }
-
-        .transparent-borderless-button { /* 透明无边框按钮样式 */
+        .transparent-borderless-button {
             display: inline-block;
             padding: 10px 20px;
             font-size: 1.5em;
@@ -189,49 +163,70 @@
             text-align: center;
             text-decoration: none;
             transition: color 0.3s ease, transform 0.2s ease;
-            position: absolute; /* 使用绝对定位 */
+            position: absolute;
         }
-
         /* 按钮1的位置 */
         .transparent-borderless-button:nth-child(1) {
-            top: 40%; /* 距离顶部 40% */
-            left: 50%; /* 距离左侧 50% */
+            top: 40%;
+            left: 50%;
             transform: translate(-50%, -50%);
         }
-
         /* 按钮2的位置 */
         .transparent-borderless-button:nth-child(2) {
-            top: 45%; /* 距离顶部 45% */
-            left: 50%; /* 距离左侧 50% */
+            top: 45%;
+            left: 50%;
             transform: translate(-50%, -50%);
         }
-
         .transparent-borderless-button:hover {
             color: #e375f1;
-            transform: translate(-50%,-50%) scale(1.1); /* 悬停时放大按钮 */
+            transform: translate(-50%,-50%) scale(1.1);
         }
-
         .transparent-borderless-button:active {
             color: #1c598a;
-            transform: translate(-50%,-50%) scale(0.95); /* 点击时缩小按钮 */
+            transform: translate(-50%,-50%) scale(0.95);
         }
-
-        /* 样式应用到每个字 */
         .button-letter {
             display: inline-block;
             opacity: 0;
             transform: translateX(-100%);
             animation: moveLetter 1s ease-in-out forwards;
         }
-
         p {
-            font-family: 'KaiTi', sans-serif; /* 更改字体 */
-            font-size: 1.5em; /* 字体大小 */
-            color: #00365a; /* 字体颜色 */
-            text-align: center; /* 水平居中 */
-            position: relative; /* 必须设置 position 才能使用 z-index */
-            top: 15em; /* 距离顶部 */
-            z-index: 50; /* 设置 Z 轴高度 */
+            font-family: 'KaiTi', sans-serif;
+            font-size: 1.5em;
+            color: #00365a;
+            text-align: center;
+            position: relative;
+            top: 15em;
+            z-index: 50;
+        }
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .intro h1 {
+                font-size: 2em;
+            }
+            .loader {
+                width: 30px;
+                height: 30px;
+            }
+            .content h1 {
+                font-size: 1.3em;
+                top: 80px;
+            }
+            .transparent-borderless-button {
+                font-size: 1em;
+                padding: 8px 12px;
+            }
+            .transparent-borderless-button:nth-child(1) {
+                top: 60%;
+            }
+            .transparent-borderless-button:nth-child(2) {
+                top: 70%;
+            }
+            p {
+                font-size: 1em;
+                top: 2em;
+            }
         }
     </style>
 </head>
@@ -251,7 +246,7 @@
         muted
         playsinline
         preload="metadata"
-        poster="1.jpg"   <!-- 建议准备一张封面图 -->
+        poster="22.jpg"   <!-- 建议准备一张封面图 -->
     ></video>
 
     <!-- 主内容 -->
